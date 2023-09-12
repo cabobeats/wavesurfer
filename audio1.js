@@ -1,3 +1,5 @@
+console.log("Script is loaded and executing");
+
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         var waveformContainers = document.querySelectorAll(".waveform-container");
@@ -14,12 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 minPxPerSec: 50
             });
 
+            console.log("WaveSurfer instance created");
+
             wavesurfer.load(audioSrc);
+            console.log("Attempting to load audio from:", audioSrc);
 
             wavesurfer.on("ready", function() {
+                console.log("WaveSurfer is ready");
                 var playButtons = document.querySelectorAll(".js-audio-toggle");
                 var playButton = playButtons[index];
                 playButton.addEventListener("click", function() {
+                    console.log("Play button clicked");
                     wavesurfer.playPause();
                     playButton.querySelector(".play-icon").classList.toggle("fa-play");
                     playButton.querySelector(".play-icon").classList.toggle("fa-pause");
